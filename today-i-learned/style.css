@@ -1,25 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
+  color: #fafafa;
   background-color: #262626;
+  font-family: "Sono", sans-serif;
+  padding: 40px;
+}
+
+/* MAIN LAYOUT */
+.header {
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 48px;
+}
+
+/* ELEMENTS */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .fact-form {
   background-color: #404040;
+  margin-bottom: 40px;
+  padding: 16px 40px;
+  text-align: center;
 }
 
 h1 {
   font-size: 42px;
   text-transform: uppercase;
-  text-align: center;
   font-family: "Coiny", sans-serif;
   color: #fafafa;
+  line-height: 1;
+  margin-top: 6px;
 }
 
 .fact {
   font-size: 20px;
   line-height: 1.4;
-  font-family: "Sono", sans-serif;
   color: #fafafa;
   background-color: #404040;
+  margin-bottom: 16px;
+  padding: 16px 24px;
+  letter-spacing: -1px;
+
+  display: flex;
+  align-items: center;
+  gap: 24px;
 }
 
 .tag {
@@ -27,6 +68,13 @@ h1 {
   font-size: 14px;
   font-family: "Coiny", sans-serif;
   color: #fafafa;
+  padding-top: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.vote-buttons {
+  margin-left: auto;
 }
 
 ul {
