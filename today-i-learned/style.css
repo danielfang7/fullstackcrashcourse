@@ -8,10 +8,15 @@ body {
   color: #fafafa;
   background-color: #262626;
   font-family: "Sono", sans-serif;
-  padding: 40px;
+  padding: 48px 64px;
 }
 
 /* MAIN LAYOUT */
+.container {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
 .header {
   margin-bottom: 40px;
   display: flex;
@@ -38,6 +43,11 @@ body {
   margin-bottom: 40px;
   padding: 16px 40px;
   text-align: center;
+}
+
+.logo img {
+  width: 68px;
+  height: 68px;
 }
 
 h1 {
@@ -79,4 +89,17 @@ h1 {
 
 ul {
   list-style: none;
+}
+
+.source:link,
+.source:visited {
+  color: #a3a3a3;
+  text-decoration: none;
+  margin-left: 12px;
+  transition: 0.3s;
+}
+
+.source:hover,
+.source:active {
+  color: #3b82f6;
 }
