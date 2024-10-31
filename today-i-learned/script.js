@@ -50,7 +50,26 @@ const factsList = document.querySelector(".facts-list");
 
 // Create DOM Elements: Render Facts in List
 factsList.innerHTML = "";
-createFactsList(initialFacts);
+
+// Load Data from Supabase
+loadFacts();
+
+async function loadFacts() {
+  const res = await fetch(
+    "https://qpdbdndwfqnvyjqythqi.supabase.co/rest/v1/facts",
+    {
+      headers: {
+        apikey:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFwZGJkbmR3ZnFudnlqcXl0aHFpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjk0ODQxMjgsImV4cCI6MjA0NTA2MDEyOH0.-hJ_dtN23SQaASvn9dAXKdQHzcFd2pR3pPPpP0CNGyc",
+        authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFwZGJkbmR3ZnFudnlqcXl0aHFpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjk0ODQxMjgsImV4cCI6MjA0NTA2MDEyOH0.-hJ_dtN23SQaASvn9dAXKdQHzcFd2pR3pPPpP0CNGyc",
+      },
+    }
+  );
+  const data = await res.json();
+
+  createFactsList(data);
+}
 
 function createFactsList(dataArray) {
   const htmlArr = dataArray.map(
@@ -63,7 +82,9 @@ function createFactsList(dataArray) {
           target="_blank"
         >(Source)</a>
     </p>
-    <span class="tag" style="background-color: #3b82f6">${fact.category}</span>
+    <span class="tag" style="background-color: ${
+      CATEGORIES.find((cat) => cat.name === fact.category).color
+    }">${fact.category}</span>
     </li>`
   );
   const html = htmlArr.join("");
@@ -78,6 +99,8 @@ btnOpen.addEventListener(`click`, () => {
     : "Close";
 });
 
+// console.log([7, 64, 6, -23, 11].filter((el) => el > 10)); // returns new array [64, 11], remember arrow functions auto return
+console.log([7, 64, 6, -23, 11].find((el) => el > 10)); // returns 64
 /*
 const calcFactAge2 = (year) =>
   year <= new Date().getFullYear()
