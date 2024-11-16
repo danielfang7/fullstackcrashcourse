@@ -94,15 +94,49 @@ function Header({ showForm, setShowForm }) {
   );
 }
 
+function isValidHttpUrl(string) {
+  let url;
+
+  try {
+    url = new URL(string);
+  } catch (_) {
+    return false;
+  }
+
+  return url.protocol === "http:" || url.protocol === "https:";
+}
+
 function NewFactForm() {
   const [text, setText] = useState("");
-  const [source, setSource] = useState("");
+  const [source, setSource] = useState("https://example.com");
   const [category, setCategory] = useState("");
   const textLength = text.length;
 
   function handleSubmit(e) {
+    // 1. Prevent Browser Reload
     e.preventDefault();
     console.log(text, source, category);
+
+    // 2. Check if data is valid. If so, create a new Fact
+    if (text && isValidHttpUrl(source) && category && textLength <= 200) {
+      // 3. Create a new Fact Object
+      const newFact = {
+        id: Math.round(Math.random() * 1000000),
+        text,
+        source,
+        category,
+        votesInteresting: 0,
+        votesMindblowing: 0,
+        votesFalse: 0,
+        createdIn: new Date().getCurrentYear(),
+      };
+    }
+
+    // 4. Add the new fact to the UI: add the fact to state
+
+    // 5. Reset input fields
+
+    // 6. Close the fact form
   }
 
   return (
